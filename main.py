@@ -1,10 +1,16 @@
-from fishing_simulator.models.ocean import Ocean
-from fishing_simulator.models.fish import Fish
-from fishing_simulator.models.shoal import Shoal
+from models.ocean import Ocean
+from models.shoal import Shoal
+import matplotlib.pyplot as plt
+from actions.actions import animated_plot
 
 
 if __name__ == "__main__":
-    INITIAL_POPULATION = input("How many fish to start with?")
-    OCEAN = Ocean(100)
-    FISH = Shoal(100, Ocean)
+    INITIAL_POPULATION = int(input("How many fish to start with?"))
+    OCEAN = Ocean(3)
+    for i in range(10):
+        FISH = Shoal(INITIAL_POPULATION, OCEAN)
+        print(OCEAN.fish_per_unit_square(FISH))
+        FISH.move(1)
+
+
 
